@@ -1,9 +1,8 @@
 # sauron (working name)
 
-A boundary test for agents that serve more than one person.
+A clean, deterministic, zero-cost fuzzing and delta-debugging harness for multi-tenant AI agent isolation. 
 
-You point it at an agent. A scripted, seeded team talks to the agent through a fake chat
-service, and every private fact carries a marker. The agent's model is replaced by a tracer that
+You point it at an agent. A scripted, seeded team talks to the agent through a synthetic team sandbox , and every private planted fact carries a marker. The agent's model is replaced by a tracer that
 repeats every marker it was shown. If a marker from one person's private chat comes out in
 front of another person, the agent's plumbing showed one person's data in another's turn. The
 result is one replay file and the shortest message sequence that still does it. No model, no
