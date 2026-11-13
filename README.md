@@ -1,6 +1,6 @@
 # sauron (working name)
 
-A clean, deterministic, zero-cost fuzzing and delta-debugging harness for multi-tenant AI agent isolation. 
+A clean, deterministic, zero-congig fuzzing and delta-debugging harness for multi-tenant AI agent isolation. 
 
 You point it at an agent. A scripted, seeded team talks to the agent through a synthetic team sandbox , and every private planted fact carries a marker. The agent's model is replaced by a tracer that
 repeats every marker it was shown. If a marker from one person's private chat comes out in
