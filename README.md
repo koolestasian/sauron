@@ -10,7 +10,7 @@ key, no bill; the same seed gives the same result.
 
 ## Status
 
-Pre-alpha, private. Nothing is built yet. The research behind it is in
+The research behind it is in
 [docs/research/](docs/research/) and the decisions it inherits are in
 [docs/inherited/](docs/inherited/).
 
