@@ -1,4 +1,4 @@
-# sauron (working name)
+# sauron
 
 A clean, deterministic, zero-congig fuzzing and delta-debugging harness for multi-tenant AI agent isolation. 
 
