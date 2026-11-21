@@ -1,13 +1,12 @@
 # sauron
 
-Deterministic boundary testing for AI agents that serve multiple people.
+Deterministic boundary testing for multi-user AI agents.
 
 A shared agent handles private messages, group conversations, retrieval and memory.
-Sauron asks a concrete question: **can one person's private data reach another
-person's context or reply?**
+Sauron targets the integration faults that mix one person's private data into
+another person's context or reply.
 
-**Status: research and design.** The test method is specified below; the engine
-and integrations are not implemented yet.
+**Stage: research and design.** Engine implementation is next.
 
 ## The approach
 
@@ -35,21 +34,20 @@ trace provides a specific isolation failure to investigate. The tracer makes
 accidental context mixing observable without depending on a model choosing to
 repeat the private fact.
 
-The intended output is a replay record and a smaller valid scenario that preserves
-the failure. Exact replay depends on controlling the relevant inputs and state;
-a seed alone does not make an arbitrary external agent deterministic.
+The output contract pairs a replay record with a smaller scenario that preserves
+the failure. The design separates deterministic engine replay from live-agent
+reproduction and preserves event dependencies during reduction.
 
 ## Read the work
 
 | Document | Focus |
 |---|---|
-| [Boundary-testing design](docs/research/boundary-testing.md) | Threat model, tracer observations, controls, replay and reduction limits |
-| [Selected prior art](docs/research/prior-art.md) | Existing channel tests, privacy benchmarks and deterministic testing; the specific question left to evaluate |
-| [Evidence and validation](docs/research/evidence-standards.md) | What would justify a finding, how to test the checker, and what must be measured before making broader claims |
+| [Boundary-testing design](docs/research/boundary-testing.md) | Threat model, tracer observations, replay and dependency-aware reduction |
+| [Selected prior art](docs/research/prior-art.md) | How channel tests, privacy benchmarks and deterministic simulation inform the design |
+| [Validation plan](docs/research/evidence-standards.md) | Controls, failure evidence and measurements for the first integration |
 
-The first goal is an offline test of context assembly and message routing, with
-synthetic data and no model API key. Semantic privacy, paraphrase leakage and
-predictions of real team behavior require different evidence.
+The first integration targets context assembly and message routing: offline,
+synthetic data, no model API key.
 
 ## Contributing
 
