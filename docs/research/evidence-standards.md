@@ -1,22 +1,21 @@
-# Evidence and validation
+# Validation plan
 
-Status: proposed validation plan, November 2026. No controls, target-agent tests
-or reduction experiments described here have been run in this repository.
+Validation design, November 2026.
 
-The central risk is a test that appears precise while measuring the wrong thing.
-A marker detector is useful only if the marker arrived, the expected audience is
-correct, and the checker distinguishes working behavior from known faults.
+Three checks make a marker result interpretable: the input arrived, the expected
+audience is correct, and the checker distinguishes working behavior from known
+faults.
 
 ## What a finding must establish
 
-| Evidence | What it establishes | What it does not establish |
+| Evidence | Observation | Validation check |
 |---|---|---|
-| Captured delivery of the planted event | The target encountered the intended test input | That it retrieved, remembered or understood the fact |
-| Scenario permissions at the relevant time | The audience allowed by this synthetic case | A universal policy for real organizations |
-| Marker in a captured model request | Exposure at that observed context boundary | That a real model would disclose the fact |
-| Marker in an observed outbound message | Exact disclosure on that output path | Detection of paraphrase, inference or encoded leakage |
-| A successful recorded replay | Reproduction under the recorded boundary conditions | Live reproduction after target or environment changes |
-| A reduced case that still fails | A smaller valid case under the tested removal rules | A globally smallest case or causal explanation |
+| Captured delivery of the planted event | The target encountered the intended test input | Match the delivered event to the scenario record |
+| Scenario permissions at the relevant time | The allowed audience for this case | Derive permissions from the event timeline |
+| Marker in a captured model request | Exposure at the model-input boundary | Match the marker, active turn and permitted audience |
+| Marker in an observed outbound message | Exact disclosure on the output path | Match the marker and actual recipients |
+| A successful recorded replay | Reproduction under the recorded conditions | Compare engine outputs from the same recorded inputs |
+| A reduced case that still fails | A smaller valid reproducing case | Check dependencies and rerun the failure predicate |
 
 ## Test the checker with controls
 
@@ -37,8 +36,7 @@ Record pass, fail, not applicable and harness error separately. A missing
 precondition must not silently count as a pass. A failed control invalidates the
 interpretation of the affected check until the cause is resolved.
 
-One planted fault establishes sensitivity to that fault. It does not estimate the
-prevalence of real defects or prove general detection effectiveness.
+Report detection by fault type so the result maps directly to the coverage tested.
 
 ## Measurements for the first implementation
 
@@ -52,10 +50,8 @@ prevalence of real defects or prove general detection effectiveness.
 
 Publish the scenario, relevant source versions, checker expectations and synthetic
 failure record alongside any result. Report counts and denominators before rates.
-Repeated runs of the same case are not independent scenarios; preserve those
-groupings when reporting uncertainty. Do not convert a small convenience sample
-into a general agent-safety score.
+Group repeated runs by scenario when reporting uncertainty. Separate fault
+coverage, reproduction reliability and reduction results.
 
-The [selected prior art](prior-art.md) identifies the sources and inspected scope
-behind the design. Claims about detection, replay or reduction performance await
-runnable artifacts and measured results.
+The [selected prior art](prior-art.md) connects these checks to the research behind
+the design.
