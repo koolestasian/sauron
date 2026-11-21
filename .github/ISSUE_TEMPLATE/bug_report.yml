@@ -1,0 +1,43 @@
+name: Bug report
+description: Report an error in the research, design or available implementation
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not report security vulnerabilities here. Use the private link in .github/SECURITY.md.
+        Do not paste real chat messages, names, keys or tokens.
+  - type: input
+    id: version
+    attributes:
+      label: Commit
+      description: The commit hash you ran.
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Environment, if relevant
+      description: For a documentation issue, name the affected document or section.
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. ...
+        2. ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behaviour
+      description: Include the relevant part of the report or log, with secrets removed.
+    validations:
+      required: true

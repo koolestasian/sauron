@@ -1,0 +1,22 @@
+# Secrets and local settings
+.env
+*.env
+
+# Unpublished working material
+/private/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+dist/
+build/
+*.egg-info/
+
+# Run output
+runs/
+*.db
+
+# Editors and OS
+.DS_Store
+Thumbs.db
